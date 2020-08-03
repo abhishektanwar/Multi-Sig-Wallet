@@ -7,8 +7,8 @@ contract Wallet{
     
     struct Transfer{
         uint id;
-        address payable to;
         uint amount;
+        address payable to;
         uint approvals;
         bool sent;
         
@@ -26,11 +26,11 @@ contract Wallet{
         return approvers;
     }
     
-    function createTransfer(address payable _to, uint _amount) external onlyApprover{
+    function createTransfer(uint amount, address payable to ) external onlyApprover{
         transfers.push(Transfer(
                 transfers.length,
-                _to,
-                _amount,
+                amount,
+                to,
                 0,
                 false
             ));
